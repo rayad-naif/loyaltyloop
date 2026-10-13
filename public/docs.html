@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation - LoyaltyLoop</title>
+<meta name="description" content="Setup guide and reference for LoyaltyLoop: rules, redemption, VIP tiers, the workflow webhook and troubleshooting.">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"/></svg></span>LoyaltyLoop</a>
+  <nav class="nav-links"><a href="/">Overview</a><a href="/docs" class="active">Docs</a><a href="/support">Support</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a class="btn" href="/install">Install app</a></nav>
+</div></header>
+
+<main class="page"><div class="wrap"><article class="prose">
+<h1>Documentation</h1>
+<p class="meta">Everything you need to set up and run LoyaltyLoop in your CRM.</p>
+<div class="toc"><strong>On this page</strong>
+<a href="#install">1. Installing</a><a href="#open">2. Opening the app</a><a href="#rules">3. Earn and redeem rules</a><a href="#redeem">4. Redeeming points</a>
+<a href="#tiers">5. VIP tiers</a><a href="#field">6. Using the points balance</a><a href="#webhook">7. Workflow webhook</a><a href="#notes">8. Good to know</a><a href="#troubleshooting">9. Troubleshooting</a></div>
+
+<h2 id="install">1. Installing</h2>
+<p>Install LoyaltyLoop from the HighLevel App Marketplace, or use the <a href="/install">install link</a>. You can install on:</p>
+<ul>
+<li><strong>A single sub-account</strong> - LoyaltyLoop is connected to that location only.</li>
+<li><strong>Your agency (bulk install)</strong> - choose which sub-accounts to enable. Each one gets its own independent rules, balances and history.</li>
+</ul>
+<p>During install LoyaltyLoop creates a contact custom field called <strong>Loyalty Points Balance</strong> (field key <code>contact.loyalty_points_balance</code>) and a starter set of rules you can edit or delete.</p>
+
+<h2 id="open">2. Opening the app</h2>
+<p>Inside a sub-account, click <strong>LoyaltyLoop</strong> in the left-hand menu. You will be signed in automatically using your CRM session. If you open the app from the agency view you will be asked to choose a sub-account first.</p>
+<p>The dashboard has five tabs: <strong>Overview</strong> (totals and top members), <strong>Rules</strong>, <strong>Members</strong> (search and adjust balances), <strong>Activity</strong> (every points change) and <strong>Settings</strong> (VIP tiers and the workflow webhook).</p>
+
+<h2 id="rules">3. Earn and redeem rules</h2>
+<table>
+<tr><th>Rule</th><th>When it fires</th><th>Details</th></tr>
+<tr><td><strong>Invoice paid</strong></td><td>An invoice is fully paid</td><td>Points = amount paid × multiplier, rounded down. Optional minimum invoice amount. Paid once per invoice.</td></tr>
+<tr><td><strong>Contact tagged (earn)</strong></td><td>A contact has the tag</td><td>Fixed points. Paid once per contact, or repeatable if you enable "remove the tag after awarding".</td></tr>
+<tr><td><strong>Appointment status</strong></td><td>An appointment becomes <em>Showed</em> or <em>Confirmed</em></td><td>Fixed points. Paid once per appointment.</td></tr>
+<tr><td><strong>New contact</strong></td><td>A contact is created</td><td>A welcome bonus, paid once per contact.</td></tr>
+<tr><td><strong>Contact tagged (redeem)</strong></td><td>A contact has the tag</td><td>Deducts points and removes the tag. See below.</td></tr>
+</table>
+<p>Rules are saved per sub-account. Remember to click <strong>Save changes</strong> after editing.</p>
+
+<h2 id="redeem">4. Redeeming points</h2>
+<p>Create a <em>Contact tagged (redeem)</em> rule, for example tag <code>redeem_coffee</code> costing 500 points. When a staff member or workflow adds that tag to a contact:</p>
+<ol>
+<li>If the contact has enough points, the cost is deducted and the new balance is written to their record.</li>
+<li>If not, nothing is deducted and the attempt is recorded in <strong>Activity</strong> as "not enough points".</li>
+<li>Either way, the tag is removed so it can be used again later.</li>
+</ol>
+
+<h2 id="tiers">5. VIP tiers</h2>
+<p>In <strong>Settings → VIP tiers</strong>, define a name, a points threshold and a tag. The first time a contact's balance reaches the threshold, LoyaltyLoop adds the tag (default: <code>VIP_Gold</code> at 1,000 points). Use that tag as a workflow trigger to send rewards or move them into a premium pipeline. A tier tag is added once per contact and is not removed if the balance later drops.</p>
+
+<h2 id="field">6. Using the points balance</h2>
+<p>The balance is available anywhere custom fields are: the merge field <code>{{contact.loyalty_points_balance}}</code>, smart list filters, and workflow <em>If/Else</em> conditions (for example "Loyalty Points Balance is greater than 200").</p>
+
+<h2 id="webhook">7. Workflow webhook</h2>
+<p>To award or deduct points from your own automations, add a <strong>Custom Webhook</strong> action to a workflow:</p>
+<ul>
+<li>Method: <code>POST</code></li>
+<li>URL and API key: shown in <strong>Settings → Workflow webhook</strong> (keep the key private; you can rotate it at any time)</li>
+<li>Header: <code>x-api-key: &lt;your key&gt;</code></li>
+</ul>
+<pre><code>{
+  "contactId": "{{contact.id}}",
+  "action": "earn",
+  "points": 50,
+  "reason": "Event attendance",
+  "idempotencyKey": "{{contact.id}}-event-2026-10"
+}</code></pre>
+<table>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td><code>contactId</code></td><td>Required. The contact to change.</td></tr>
+<tr><td><code>action</code></td><td>Required. <code>earn</code> or <code>burn</code>.</td></tr>
+<tr><td><code>points</code></td><td>Required. A positive whole number (up to 1,000,000).</td></tr>
+<tr><td><code>reason</code></td><td>Optional. Shown in Activity.</td></tr>
+<tr><td><code>idempotencyKey</code></td><td>Optional. If the same key is sent twice only the first request is applied.</td></tr>
+</table>
+<p>Responses: <code>200</code> with the new balance on success, <code>401</code> for a wrong key, <code>409</code> if a <code>burn</code> would take the balance below zero.</p>
+
+<h2 id="notes">8. Good to know</h2>
+<ul>
+<li>Balances are kept by LoyaltyLoop and mirrored to the contact field after every change. If a CRM update ever fails, the Overview tab shows a "waiting to sync" notice with a <strong>Sync now</strong> button. Points are never lost.</li>
+<li>Editing the points custom field by hand does not change LoyaltyLoop's ledger and will be overwritten on the next change. Use <strong>Members → Adjust</strong> instead.</li>
+<li>Refunds and voided invoices do not automatically remove points. Use <strong>Members → Adjust</strong> with a negative number.</li>
+<li>If a contact already had a value in the points field when LoyaltyLoop first sees them (for example after a reinstall), that value is used as their starting balance.</li>
+<li>Uninstalling LoyaltyLoop deletes the rules, ledger and history we hold for the location. The field values on your contacts remain in your CRM.</li>
+</ul>
+
+<h2 id="troubleshooting">9. Troubleshooting</h2>
+<table>
+<tr><th>Problem</th><th>What to check</th></tr>
+<tr><td>Dashboard says "not installed"</td><td>Open the app from inside a sub-account that LoyaltyLoop was installed on. Agency admins can install it for more sub-accounts from the App Marketplace.</td></tr>
+<tr><td>Points are not being added</td><td>Check the rule exists and was saved. Invoices must be <em>fully paid</em>. For tag rules, the tag must match exactly (not case-sensitive). Look in <strong>Activity</strong> for the event.</td></tr>
+<tr><td>Overview shows "Points field is missing"</td><td>Click <strong>Create field</strong>. If it keeps failing, confirm the app has permission to manage custom fields, or reinstall.</td></tr>
+<tr><td>The same tag keeps awarding points</td><td>Tag rules pay once per contact unless "remove the tag after awarding" is enabled for that rule.</td></tr>
+<tr><td>Session expired</td><td>Reload the page or reopen LoyaltyLoop from the left menu.</td></tr>
+</table>
+<div class="callout">Still stuck? Email <a href="mailto:idylle_radieuse@outlook.com">idylle_radieuse@outlook.com</a> with your location name and what you expected to happen.</div>
+</article></div></main>
+<footer><div class="wrap">
+  <div>© 2026 IR Official. LoyaltyLoop is a product of IR Official.</div>
+  <nav><a href="/docs">Documentation</a><a href="/support">Support</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="mailto:idylle_radieuse@outlook.com">idylle_radieuse@outlook.com</a></nav>
+</div></footer>
+</body>
+</html>
