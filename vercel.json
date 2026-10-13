@@ -10,13 +10,13 @@
     { "source": "/home", "destination": "/", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.js" },
-    { "source": "/webhook/(.*)", "destination": "/api/index.js" },
-    { "source": "/oauth/(.*)", "destination": "/api/index.js" },
-    { "source": "/sso/(.*)", "destination": "/api/index.js" },
-    { "source": "/install", "destination": "/api/index.js" },
-    { "source": "/app", "destination": "/api/index.js" },
-    { "source": "/health", "destination": "/api/index.js" }
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/webhook/(.*)", "destination": "/api/index" },
+    { "source": "/oauth/(.*)", "destination": "/api/index" },
+    { "source": "/sso/(.*)", "destination": "/api/index" },
+    { "source": "/install", "destination": "/api/index" },
+    { "source": "/app", "destination": "/api/index" },
+    { "source": "/health", "destination": "/api/index" }
   ],
   "headers": [
     {
