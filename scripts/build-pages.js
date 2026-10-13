@@ -69,10 +69,10 @@ layout({
   file: 'index.html',
   active: '/',
   title: 'LoyaltyLoop - Gamified loyalty points for your CRM',
-  description: 'LoyaltyLoop rewards your customers with points for paid invoices, attended appointments, tags and more, directly inside your HighLevel CRM.',
+  description: 'LoyaltyLoop rewards your customers with points for paid invoices, attended appointments, tags and more, directly inside your CRM.',
   body: `
 <section class="hero"><div class="wrap">
-  <span class="pill">Loyalty &amp; rewards engine for HighLevel</span>
+  <span class="pill">Loyalty &amp; rewards engine for your CRM</span>
   <h1>Loyalty points that<br><span>run themselves</span></h1>
   <p class="lead">Reward customers for paying invoices, showing up to appointments and the actions you choose. Points land on the contact record automatically, ready for your workflows.</p>
   <div class="cta"><a class="btn lg" href="/install">Install LoyaltyLoop</a><a class="btn lg ghost" href="/docs">Read the docs</a></div>
@@ -90,7 +90,7 @@ layout({
 
 <section class="block alt"><div class="wrap">
   <h2 class="h2">Everything you need for a rewards programme</h2>
-  <p class="sub">Built for agencies and local businesses that run on HighLevel.</p>
+  <p class="sub">Built for agencies and local businesses that run on LeadConnector.</p>
   <div class="grid g3">
     ${card('sliders', '', 'Flexible earn rules', 'Award points for paid invoices (any rate), appointment status, new contacts, or whenever a tag is applied.')}
     ${card('gift', 'g', 'Simple redemption', 'Add a tag like <code>redeem_coffee</code> and LoyaltyLoop deducts the points, removes the tag, and refuses if the balance is too low.')}
@@ -123,7 +123,7 @@ layout({
 <a href="#tiers">5. VIP tiers</a><a href="#field">6. Using the points balance</a><a href="#webhook">7. Workflow webhook</a><a href="#notes">8. Good to know</a><a href="#troubleshooting">9. Troubleshooting</a></div>
 
 <h2 id="install">1. Installing</h2>
-<p>Install LoyaltyLoop from the HighLevel App Marketplace, or use the <a href="/install">install link</a>. You can install on:</p>
+<p>Install LoyaltyLoop from the LeadConnector App Marketplace, or use the <a href="/install">install link</a>. You can install on:</p>
 <ul>
 <li><strong>A single sub-account</strong> - LoyaltyLoop is connected to that location only.</li>
 <li><strong>Your agency (bulk install)</strong> - choose which sub-accounts to enable. Each one gets its own independent rules, balances and history.</li>
@@ -223,7 +223,7 @@ layout({
 
 <h2>Frequently asked questions</h2>
 <h3>How do I install LoyaltyLoop?</h3>
-<p>Use the <a href="/install">install link</a> or find LoyaltyLoop in the HighLevel App Marketplace. Then open it from the left-hand menu of your sub-account.</p>
+<p>Use the <a href="/install">install link</a> or find LoyaltyLoop in the LeadConnector App Marketplace. Then open it from the left-hand menu of your sub-account.</p>
 <h3>Does each sub-account have separate data?</h3>
 <p>Yes. Rules, balances, tiers and activity are stored separately for every location. Agency installs let you choose which sub-accounts to enable.</p>
 <h3>Where do customers' points appear?</h3>
@@ -249,7 +249,7 @@ layout({
 <main class="page"><div class="wrap"><article class="prose">
 <h1>Privacy Policy</h1>
 <p class="meta">Effective ${UPDATED} · Operated by ${COMPANY}</p>
-<p>LoyaltyLoop ("the App", "we") is a loyalty points application for the HighLevel platform, provided by ${COMPANY}. This policy explains what data the App handles when you install and use it, and your choices. We do not sell your data and we do not use it for advertising.</p>
+<p>LoyaltyLoop ("the App", "we") is a loyalty points application for the LeadConnector platform, provided by ${COMPANY}. This policy explains what data the App handles when you install and use it, and your choices. We do not sell your data and we do not use it for advertising.</p>
 
 <h2>1. Who is who</h2>
 <p>When you use LoyaltyLoop, you (the business or agency) are the controller of your customers' data and we act as your processor, handling it only to provide the features you configure. This policy covers our handling of both your account information and the customer data you ask the App to process.</p>
@@ -258,10 +258,10 @@ layout({
 <table>
 <tr><th>Category</th><th>What</th><th>Why</th></tr>
 <tr><td>Installation data</td><td>Location ID, company (agency) ID, installing user ID, OAuth access and refresh tokens, granted scopes</td><td>To act on your behalf in your CRM and to keep each location's data separate</td></tr>
-<tr><td>Session data</td><td>The user ID, name, email, role and active location HighLevel provides when you open the App inside your CRM</td><td>To sign you in. We keep only a short-lived signed session token; we do not store your name or email</td></tr>
+<tr><td>Session data</td><td>The user ID, name, email, role and active location LeadConnector provides when you open the App inside your CRM</td><td>To sign you in. We keep only a short-lived signed session token; we do not store your name or email</td></tr>
 <tr><td>Configuration</td><td>Your rules, VIP tier settings, the ID of the points custom field, and a workflow webhook key</td><td>To run your loyalty programme</td></tr>
 <tr><td>Loyalty ledger</td><td>For each rewarded contact: contact ID, display name (cached to label the dashboard), points balance, and a log of points changes with the reason and time</td><td>To calculate balances and show activity and leaderboards</td></tr>
-<tr><td>Event data</td><td>Webhook events from HighLevel (such as a paid invoice, an appointment status, a tag change). Contents are processed to apply your rules; we keep only a short-lived identifier to prevent the same event being counted twice</td><td>To award points exactly once</td></tr>
+<tr><td>Event data</td><td>Webhook events from LeadConnector (such as a paid invoice, an appointment status, a tag change). Contents are processed to apply your rules; we keep only a short-lived identifier to prevent the same event being counted twice</td><td>To award points exactly once</td></tr>
 </table>
 <p>We do not collect payment card details, passwords, or the contents of messages. We do not store contacts' email addresses or phone numbers; these are read live from your CRM only when you search for a member in the dashboard.</p>
 
@@ -278,13 +278,13 @@ layout({
 <h2>5. Storage and security</h2>
 <ul>
 <li>OAuth tokens are encrypted at rest (AES-256-GCM). All traffic uses HTTPS.</li>
-<li>Webhook requests from HighLevel are verified using HighLevel's digital signature before they are processed.</li>
+<li>Webhook requests from LeadConnector are verified using LeadConnector's digital signature before they are processed.</li>
 <li>Each location's data is stored under that location's own keys. Dashboard sessions are bound to a single location and cannot read another's data.</li>
 <li>Data is hosted with our infrastructure providers (application hosting and a managed Redis database) who process it only to provide hosting.</li>
 </ul>
 
 <h2>6. Sharing</h2>
-<p>We do not sell, rent or share your data. We share it only with the infrastructure providers described above, with HighLevel (because the App operates through its API), or if required by law.</p>
+<p>We do not sell, rent or share your data. We share it only with the infrastructure providers described above, with LeadConnector (because the App operates through its API), or if required by law.</p>
 
 <h2>7. Retention and deletion</h2>
 <p>We keep data while the App is installed. When you uninstall, we delete the tokens, rules, settings, balances, activity log and cached names we hold for the location. Points values already written to your contacts' custom fields remain in your CRM, which you control. Short-lived event identifiers expire automatically within seven days. You can also request deletion at any time at <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
@@ -316,10 +316,10 @@ layout({
 <p>These Terms govern your use of LoyaltyLoop (the "App"), provided by ${COMPANY} ("we", "us"). By installing or using the App you agree to these Terms. If you accept them on behalf of a business or agency, you confirm you have authority to do so.</p>
 
 <h2>1. The service</h2>
-<p>LoyaltyLoop lets you define rules that award and redeem loyalty points for your contacts inside your HighLevel account, and writes balances and tags back to those contacts. The App works through HighLevel's APIs and requires an active HighLevel account.</p>
+<p>LoyaltyLoop lets you define rules that award and redeem loyalty points for your contacts inside your CRM account, and writes balances and tags back to those contacts. The App works through LeadConnector's APIs and requires an active LeadConnector account.</p>
 
 <h2>2. Installation and accounts</h2>
-<p>You are responsible for the sub-accounts you install the App on, for the people you allow to use it, and for keeping your HighLevel credentials secure. Workflow webhook keys shown in the App are confidential; rotate a key if you believe it has been exposed.</p>
+<p>You are responsible for the sub-accounts you install the App on, for the people you allow to use it, and for keeping your CRM credentials secure. Workflow webhook keys shown in the App are confidential; rotate a key if you believe it has been exposed.</p>
 
 <h2>3. Your responsibilities</h2>
 <ul>
@@ -335,10 +335,10 @@ layout({
 <p>Our <a href="/privacy">Privacy Policy</a> explains how data is handled and forms part of these Terms. You keep ownership of your data. When you uninstall, we delete the data we hold for the location as described in the policy.</p>
 
 <h2>6. Availability and changes</h2>
-<p>We work to keep the App available but do not guarantee uninterrupted service; it depends on third-party platforms including HighLevel. We may modify or discontinue features, and will give reasonable notice of material changes.</p>
+<p>We work to keep the App available but do not guarantee uninterrupted service; it depends on third-party platforms including LeadConnector. We may modify or discontinue features, and will give reasonable notice of material changes.</p>
 
 <h2>7. Fees</h2>
-<p>Pricing, where applicable, is shown in the HighLevel App Marketplace listing and is billed through the Marketplace.</p>
+<p>Pricing, where applicable, is shown in the LeadConnector App Marketplace listing and is billed through the Marketplace.</p>
 
 <h2>8. Disclaimer</h2>
 <p>The App is provided "as is" and "as available". To the maximum extent permitted by law, we disclaim all warranties, including merchantability, fitness for a particular purpose and non-infringement. You are responsible for reviewing your rules and balances; automated rules can award points you did not intend if configured incorrectly.</p>
@@ -347,7 +347,7 @@ layout({
 <p>To the maximum extent permitted by law, ${COMPANY} will not be liable for indirect, incidental, special, consequential or punitive damages, or for lost profits, revenue or data, arising from your use of the App. Our total liability for any claim relating to the App is limited to the amount you paid for it in the twelve months before the claim arose.</p>
 
 <h2>10. Termination</h2>
-<p>You may stop using the App at any time by uninstalling it. We may suspend or end access if you breach these Terms or if required by law or by HighLevel's platform rules.</p>
+<p>You may stop using the App at any time by uninstalling it. We may suspend or end access if you breach these Terms or if required by law or by LeadConnector's platform rules.</p>
 
 <h2>11. Changes to these Terms</h2>
 <p>We may update these Terms and will change the effective date when we do. Continued use after an update means you accept the new Terms.</p>
