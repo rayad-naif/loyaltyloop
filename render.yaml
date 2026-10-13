@@ -1,0 +1,34 @@
+# Render Blueprint: New + -> Blueprint -> select this repo.
+services:
+  - type: web
+    name: loyaltyloop
+    runtime: node
+    plan: starter            # "free" spins down when idle, which makes webhooks slow/time out. Use a paid plan for production.
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22
+      # APP_BASE_URL defaults to Render's URL (RENDER_EXTERNAL_URL). Set it only if you use a custom domain.
+      - key: APP_BASE_URL
+        sync: false
+      - key: GHL_CLIENT_ID
+        sync: false
+      - key: GHL_CLIENT_SECRET
+        sync: false
+      - key: GHL_SHARED_SECRET
+        sync: false
+      - key: GHL_APP_ID
+        sync: false
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
+      - key: TOKEN_ENC_KEY
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
