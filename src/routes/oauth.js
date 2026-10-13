@@ -60,7 +60,7 @@ router.get(
         messagePage({
           title: 'Install failed',
           heading: 'We could not complete the install',
-          body: '<p>HighLevel rejected the authorization code (it may have expired). Please start the install again.</p>',
+          body: '<p>LeadConnector rejected the authorization code (it may have expired). Please start the install again.</p>',
           tone: 'err',
           actions: '<p><a class="btn" href="/install">Try again</a></p>'
         })
@@ -81,7 +81,7 @@ router.get(
       }
     } else {
       console.error('[oauth] unexpected token response shape:', Object.keys(data));
-      return res.status(400).send(messagePage({ title: 'Error', heading: 'Unexpected response from HighLevel', body: '<p>Please try again.</p>', tone: 'err' }));
+      return res.status(400).send(messagePage({ title: 'Error', heading: 'Unexpected response from LeadConnector', body: '<p>Please try again.</p>', tone: 'err' }));
     }
 
     // Bootstrap a few locations now; the rest bootstrap lazily on first open (see /sso/session).

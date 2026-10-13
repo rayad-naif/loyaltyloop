@@ -37,7 +37,7 @@ router.post(
       try {
         ctx = ssoDecrypt(key, config.ghl.sharedSecret);
       } catch {
-        return res.status(400).json({ success: false, error: 'bad_payload', message: 'Could not verify the HighLevel session.' });
+        return res.status(400).json({ success: false, error: 'bad_payload', message: 'Could not verify the CRM session.' });
       }
     }
 
