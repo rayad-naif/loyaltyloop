@@ -41,7 +41,7 @@
     );
   }
 
-  // ---------------------------------------------------------------- auth (HighLevel SSO handshake)
+  // ---------------------------------------------------------------- auth (CRM SSO handshake)
   function requestUserData() {
     return new Promise((resolve, reject) => {
       if (window === window.top) return reject(new Error('not_embedded'));
