@@ -96,8 +96,8 @@ router.get(
     const n = installed.length;
     const body =
       n > 0
-        ? `<p>Connected to <strong>${n}</strong> sub-account${n === 1 ? '' : 's'}. Open <strong>LoyaltyLoop</strong> from the left menu inside your CRM to set up your rules.</p>`
-        : `<p>The agency-level install is saved, but no sub-accounts were found yet. Open LoyaltyLoop from inside a sub-account and it will finish connecting automatically.</p>`;
+        ? `<p>Connected to <strong>${n}</strong> location${n === 1 ? '' : 's'}. Open <strong>LoyaltyLoop</strong> from the left menu inside your CRM to set up your rules.</p>`
+        : `<p>Your install is saved, but no locations were found yet. Open LoyaltyLoop from your CRM account and it will finish connecting automatically.</p>`;
     res.send(
       messagePage({
         title: 'Installed',

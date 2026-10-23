@@ -376,9 +376,9 @@
       await startSession();
       shell();
     } catch (e) {
-      if (e.message === 'not_embedded') return gate('Open LoyaltyLoop from your CRM', 'This dashboard runs inside your CRM. Open your sub-account and click LoyaltyLoop in the left menu. To install the app, visit the install page.', false);
+      if (e.message === 'not_embedded') return gate('Open LoyaltyLoop from your CRM', 'This dashboard runs inside your CRM. Open your CRM account and click LoyaltyLoop in the left menu. To install the app, visit the install page.', false);
       if (e.message === 'timeout') return gate('Could not reach your CRM', 'The CRM did not send your session in time. Reload the page, or reopen LoyaltyLoop from the left menu.', true);
-      gate(e.code === 'no_location' ? 'Pick a sub-account' : 'Sign-in problem', e.message, e.code !== 'not_installed' && e.code !== 'no_location');
+      gate(e.code === 'no_location' ? 'Choose an account location' : 'Sign-in problem', e.message, e.code !== 'not_installed' && e.code !== 'no_location');
     }
   }
 
