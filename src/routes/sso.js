@@ -47,7 +47,7 @@ router.post(
       return res.status(409).json({
         success: false,
         error: 'no_location',
-        message: 'Open LoyaltyLoop from inside a sub-account (not the agency view).'
+        message: 'Open LoyaltyLoop from inside your CRM account.'
       });
     }
 
@@ -59,7 +59,7 @@ router.post(
       return res.status(403).json({
         success: false,
         error: 'not_installed',
-        message: 'LoyaltyLoop is not installed for this sub-account. Ask your agency admin to install it.'
+        message: 'LoyaltyLoop is not installed for this account. Install it from the App Marketplace and try again.'
       });
     }
 

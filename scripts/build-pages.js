@@ -82,7 +82,7 @@ layout({
   <h2 class="h2">Up and running in three steps</h2>
   <p class="sub">No code, no spreadsheets. Everything is configured from inside your CRM.</p>
   <div class="steps">
-    <div class="step"><div><h4>Install from the App Marketplace</h4><p>Install LoyaltyLoop on your agency or a single sub-account. We create a <em>Loyalty Points Balance</em> field on your contacts for you.</p></div></div>
+    <div class="step"><div><h4>Install from the App Marketplace</h4><p>Install LoyaltyLoop in your CRM account. We create a <em>Loyalty Points Balance</em> field on your contacts for you.</p></div></div>
     <div class="step"><div><h4>Choose how customers earn and redeem</h4><p>Pick from ready-made rules: points per dollar, review bonuses, appointment attendance, welcome bonuses and tag-based redemptions.</p></div></div>
     <div class="step"><div><h4>Let it run</h4><p>Points are added the moment a customer pays or attends. Use the balance and VIP tags in your workflows, emails and smart lists.</p></div></div>
   </div>
@@ -90,14 +90,14 @@ layout({
 
 <section class="block alt"><div class="wrap">
   <h2 class="h2">Everything you need for a rewards programme</h2>
-  <p class="sub">Built for agencies and local businesses that run on LeadConnector.</p>
+  <p class="sub">Built for CRM teams and local businesses that run on LeadConnector.</p>
   <div class="grid g3">
     ${card('sliders', '', 'Flexible earn rules', 'Award points for paid invoices (any rate), appointment status, new contacts, or whenever a tag is applied.')}
     ${card('gift', 'g', 'Simple redemption', 'Add a tag like <code>redeem_coffee</code> and LoyaltyLoop deducts the points, removes the tag, and refuses if the balance is too low.')}
     ${card('crown', 'p', 'Automatic VIP tiers', 'Tag contacts the moment they cross a points threshold, then trigger premium follow-ups from your workflows.')}
     ${card('user', 'a', 'Balance on every contact', 'The points total is written to a custom field, so it works with merge fields, filters and conditions everywhere in the CRM.')}
     ${card('bolt', '', 'Workflow webhook', 'Award or deduct points from any automation with one webhook action, with built-in protection against duplicates.')}
-    ${card('shield', 'g', 'Isolated per location', 'Each sub-account has its own rules, balances and history. Nothing is shared between locations.')}
+    ${card('shield', 'g', 'Isolated per location', 'Each location has its own rules, balances and history. Nothing is shared between locations.')}
   </div>
 </div></section>
 
@@ -123,15 +123,11 @@ layout({
 <a href="#tiers">5. VIP tiers</a><a href="#field">6. Using the points balance</a><a href="#webhook">7. Workflow webhook</a><a href="#notes">8. Good to know</a><a href="#troubleshooting">9. Troubleshooting</a></div>
 
 <h2 id="install">1. Installing</h2>
-<p>Install LoyaltyLoop from the LeadConnector App Marketplace, or use the <a href="/install">install link</a>. You can install on:</p>
-<ul>
-<li><strong>A single sub-account</strong> - LoyaltyLoop is connected to that location only.</li>
-<li><strong>Your agency (bulk install)</strong> - choose which sub-accounts to enable. Each one gets its own independent rules, balances and history.</li>
-</ul>
+<p>Install LoyaltyLoop from the LeadConnector App Marketplace, or use the <a href="/install">install link</a>, then complete setup in your CRM account.</p>
 <p>During install LoyaltyLoop creates a contact custom field called <strong>Loyalty Points Balance</strong> (field key <code>contact.loyalty_points_balance</code>) and a starter set of rules you can edit or delete.</p>
 
 <h2 id="open">2. Opening the app</h2>
-<p>Inside a sub-account, click <strong>LoyaltyLoop</strong> in the left-hand menu. You will be signed in automatically using your CRM session. If you open the app from the agency view you will be asked to choose a sub-account first.</p>
+<p>Inside your CRM account, click <strong>LoyaltyLoop</strong> in the left-hand menu. You will be signed in automatically using your CRM session.</p>
 <p>The dashboard has five tabs: <strong>Overview</strong> (totals and top members), <strong>Rules</strong>, <strong>Members</strong> (search and adjust balances), <strong>Activity</strong> (every points change) and <strong>Settings</strong> (VIP tiers and the workflow webhook).</p>
 
 <h2 id="rules">3. Earn and redeem rules</h2>
@@ -143,7 +139,7 @@ layout({
 <tr><td><strong>New contact</strong></td><td>A contact is created</td><td>A welcome bonus, paid once per contact.</td></tr>
 <tr><td><strong>Contact tagged (redeem)</strong></td><td>A contact has the tag</td><td>Deducts points and removes the tag. See below.</td></tr>
 </table>
-<p>Rules are saved per sub-account. Remember to click <strong>Save changes</strong> after editing.</p>
+<p>Rules are saved per location. Remember to click <strong>Save changes</strong> after editing.</p>
 
 <h2 id="redeem">4. Redeeming points</h2>
 <p>Create a <em>Contact tagged (redeem)</em> rule, for example tag <code>redeem_coffee</code> costing 500 points. When a staff member or workflow adds that tag to a contact:</p>
@@ -195,7 +191,7 @@ layout({
 <h2 id="troubleshooting">9. Troubleshooting</h2>
 <table>
 <tr><th>Problem</th><th>What to check</th></tr>
-<tr><td>Dashboard says "not installed"</td><td>Open the app from inside a sub-account that LoyaltyLoop was installed on. Agency admins can install it for more sub-accounts from the App Marketplace.</td></tr>
+<tr><td>Dashboard says "not installed"</td><td>Open the app from the CRM account where LoyaltyLoop is installed. If needed, install LoyaltyLoop from the App Marketplace in this account.</td></tr>
 <tr><td>Points are not being added</td><td>Check the rule exists and was saved. Invoices must be <em>fully paid</em>. For tag rules, the tag must match exactly (not case-sensitive). Look in <strong>Activity</strong> for the event.</td></tr>
 <tr><td>Overview shows "Points field is missing"</td><td>Click <strong>Create field</strong>. If it keeps failing, confirm the app has permission to manage custom fields, or reinstall.</td></tr>
 <tr><td>The same tag keeps awarding points</td><td>Tag rules pay once per contact unless "remove the tag after awarding" is enabled for that rule.</td></tr>
@@ -223,9 +219,9 @@ layout({
 
 <h2>Frequently asked questions</h2>
 <h3>How do I install LoyaltyLoop?</h3>
-<p>Use the <a href="/install">install link</a> or find LoyaltyLoop in the LeadConnector App Marketplace. Then open it from the left-hand menu of your sub-account.</p>
-<h3>Does each sub-account have separate data?</h3>
-<p>Yes. Rules, balances, tiers and activity are stored separately for every location. Agency installs let you choose which sub-accounts to enable.</p>
+<p>Use the <a href="/install">install link</a> or find LoyaltyLoop in the LeadConnector App Marketplace. Then open it from the left-hand menu of your CRM account.</p>
+<h3>Does each location have separate data?</h3>
+<p>Yes. Rules, balances, tiers and activity are stored separately for every location.</p>
 <h3>Where do customers' points appear?</h3>
 <p>On the contact record in the <em>Loyalty Points Balance</em> custom field, which you can use in workflows, smart lists and merge fields.</p>
 <h3>A customer redeemed a reward but nothing was deducted.</h3>
@@ -252,12 +248,12 @@ layout({
 <p>LoyaltyLoop ("the App", "we") is a loyalty points application for the LeadConnector platform, provided by ${COMPANY}. This policy explains what data the App handles when you install and use it, and your choices. We do not sell your data and we do not use it for advertising.</p>
 
 <h2>1. Who is who</h2>
-<p>When you use LoyaltyLoop, you (the business or agency) are the controller of your customers' data and we act as your processor, handling it only to provide the features you configure. This policy covers our handling of both your account information and the customer data you ask the App to process.</p>
+<p>When you use LoyaltyLoop, you (the business) are the controller of your customers' data and we act as your processor, handling it only to provide the features you configure. This policy covers our handling of both your account information and the customer data you ask the App to process.</p>
 
 <h2>2. Data we handle</h2>
 <table>
 <tr><th>Category</th><th>What</th><th>Why</th></tr>
-<tr><td>Installation data</td><td>Location ID, company (agency) ID, installing user ID, OAuth access and refresh tokens, granted scopes</td><td>To act on your behalf in your CRM and to keep each location's data separate</td></tr>
+<tr><td>Installation data</td><td>Location ID, company ID, installing user ID, OAuth access and refresh tokens, granted scopes</td><td>To act on your behalf in your CRM and to keep each location's data separate</td></tr>
 <tr><td>Session data</td><td>The user ID, name, email, role and active location LeadConnector provides when you open the App inside your CRM</td><td>To sign you in. We keep only a short-lived signed session token; we do not store your name or email</td></tr>
 <tr><td>Configuration</td><td>Your rules, VIP tier settings, the ID of the points custom field, and a workflow webhook key</td><td>To run your loyalty programme</td></tr>
 <tr><td>Loyalty ledger</td><td>For each rewarded contact: contact ID, display name (cached to label the dashboard), points balance, and a log of points changes with the reason and time</td><td>To calculate balances and show activity and leaderboards</td></tr>
@@ -313,13 +309,13 @@ layout({
 <main class="page"><div class="wrap"><article class="prose">
 <h1>Terms of Service</h1>
 <p class="meta">Effective ${UPDATED} · ${COMPANY}</p>
-<p>These Terms govern your use of LoyaltyLoop (the "App"), provided by ${COMPANY} ("we", "us"). By installing or using the App you agree to these Terms. If you accept them on behalf of a business or agency, you confirm you have authority to do so.</p>
+<p>These Terms govern your use of LoyaltyLoop (the "App"), provided by ${COMPANY} ("we", "us"). By installing or using the App you agree to these Terms. If you accept them on behalf of a business, you confirm you have authority to do so.</p>
 
 <h2>1. The service</h2>
 <p>LoyaltyLoop lets you define rules that award and redeem loyalty points for your contacts inside your CRM account, and writes balances and tags back to those contacts. The App works through LeadConnector's APIs and requires an active LeadConnector account.</p>
 
 <h2>2. Installation and accounts</h2>
-<p>You are responsible for the sub-accounts you install the App on, for the people you allow to use it, and for keeping your CRM credentials secure. Workflow webhook keys shown in the App are confidential; rotate a key if you believe it has been exposed.</p>
+<p>You are responsible for the CRM accounts/locations where you install the App, for the people you allow to use it, and for keeping your CRM credentials secure. Workflow webhook keys shown in the App are confidential; rotate a key if you believe it has been exposed.</p>
 
 <h2>3. Your responsibilities</h2>
 <ul>
